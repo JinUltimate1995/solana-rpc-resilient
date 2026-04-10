@@ -5,9 +5,10 @@
 
   <br/>
 
-  <img src="https://img.shields.io/github/actions/workflow/status/JinUltimate1995/solana-rpc-resilient/ci.yml?branch=main&style=flat-square&label=tests" />
-  <img src="https://img.shields.io/pypi/v/solana-rpc-resilient?style=flat-square" />
+  <a href="https://github.com/JinUltimate1995/solana-rpc-resilient/actions"><img src="https://img.shields.io/github/actions/workflow/status/JinUltimate1995/solana-rpc-resilient/ci.yml?branch=main&style=flat-square&label=tests" /></a>
+  <a href="https://pypi.org/project/solana-rpc-resilient/"><img src="https://img.shields.io/pypi/v/solana-rpc-resilient?style=flat-square" /></a>
   <img src="https://img.shields.io/pypi/pyversions/solana-rpc-resilient?style=flat-square" />
+  <img src="https://img.shields.io/badge/typed-py.typed-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/async-first-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" />
 </div>
@@ -16,7 +17,7 @@
 
 > extracted from a production solana trading system. battle-tested with millions of rpc calls.
 
-## why
+## 🛡️ Why this library?
 
 every solana dev hits the same problems:
 
@@ -46,7 +47,7 @@ if all providers are down → auto-recovers the healthiest one after 10s.
 
 **you never think about rpc reliability again.**
 
-## install
+## 📦 Install
 
 ```bash
 pip install solana-rpc-resilient
@@ -54,7 +55,7 @@ pip install solana-rpc-resilient
 
 requires python 3.11+
 
-## features
+## ⚡ Features
 
 | feature | description |
 |---|---|
@@ -66,9 +67,9 @@ requires python 3.11+
 | **ttl cache** | configurable per-method caching to reduce unnecessary calls. |
 | **bypass mode** | emergency calls skip circuit breaker (e.g., checking balance during a sell). |
 
-## components
+## 🔧 Components
 
-### rate limiter
+### Rate Limiter
 
 ```python
 from solana_rpc_resilient import TokenBucketRateLimiter
@@ -88,7 +89,7 @@ limiter.record_rate_limit(retry_after=2.0)
 # rate automatically decreases. cooldown kicks in.
 ```
 
-### circuit breaker
+### Circuit Breaker
 
 ```python
 from solana_rpc_resilient import CircuitBreaker
@@ -105,7 +106,7 @@ result = await breaker.call(
 )
 ```
 
-### full client
+### Full Client
 
 ```python
 from solana_rpc_resilient import ResilientRPCClient
@@ -137,7 +138,7 @@ async with client:
     )
 ```
 
-## result type
+## 🎯 Result Type
 
 all methods return `Result[T, RPCError]` — no exceptions to catch:
 
@@ -152,7 +153,7 @@ else:
     print(f"failed: {error.code} — {error.message}")
 ```
 
-## architecture
+## 🏗️ Architecture
 
 ```
   your code
@@ -174,13 +175,27 @@ else:
 └─────────────────────┘
 ```
 
-## license
+---
+
+## 🆚 Comparison
+
+| | solana-rpc-resilient | raw `httpx` / `aiohttp` | solana-py |
+|---|---|---|---|
+| Rate limiting | ✅ adaptive token bucket | ❌ manual | ❌ none |
+| Circuit breaker | ✅ automatic | ❌ manual | ❌ none |
+| Provider failover | ✅ weighted rotation | ❌ single endpoint | ❌ single endpoint |
+| 429 recovery | ✅ backoff + rotate | ❌ crash | ❌ crash |
+| Request dedup | ✅ built-in | ❌ manual | ❌ none |
+| Result type | ✅ `Ok` / `Err` | ❌ exceptions | ❌ exceptions |
+| Async | ✅ native | ✅ | ⚠️ sync default |
+
+## License
 
 MIT
 
 ---
 
-## also by JinUltimate1995
+## 📦 Also by JinUltimate1995
 
 - **[jupiter-swap-python](https://github.com/JinUltimate1995/jupiter-swap-python)** — Jupiter swap client for Python. Async. Typed.
 - **[pumpfun-python](https://github.com/JinUltimate1995/pumpfun-python)** — PumpFun bonding curve + PumpSwap AMM. Direct swaps from Python.
