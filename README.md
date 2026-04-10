@@ -177,3 +177,11 @@ else:
 ## license
 
 MIT
+
+---
+
+## also by JinUltimate1995
+
+- **[jupiter-swap-python](https://github.com/JinUltimate1995/jupiter-swap-python)** — Jupiter swap client for Python. Async. Typed.
+- **[pumpfun-python](https://github.com/JinUltimate1995/pumpfun-python)** — PumpFun bonding curve + PumpSwap AMM. Direct swaps from Python.
+- **[dexscreener-python](https://github.com/JinUltimate1995/dexscreener-python)** — DexScreener API client for Python.
