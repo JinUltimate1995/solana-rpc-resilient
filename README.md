@@ -55,6 +55,8 @@ pip install solana-rpc-resilient
 
 requires python 3.11+
 
+> **You need your own RPC endpoints.** Get a free key from [Helius](https://helius.dev), [QuickNode](https://quicknode.com), or any Solana RPC provider. The public endpoint (`api.mainnet-beta.solana.com`) works but is heavily rate-limited.
+
 ## ⚡ Features
 
 | feature | description |
